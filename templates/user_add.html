@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>add user</h4>
+  <form action="{{ url_for('user_add') }}" method="POST">
+  <div>
+        <label for="name">First Name:   
+        </label>
+        <input id="title" name="first_name" type="text" placeholder="Enter first name."/>
+      </div>
+      <div>
+          <label for="lname">Last Name:   
+          </label>
+          <input id="title" name="last_name" type="text" placeholder="Enter Last name."/>
+        </div>
+<div><button type="submit" value="adduser">Add User</button></div>
+</form>
+
+
+{% endblock %}

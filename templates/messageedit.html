@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>edit message</h4>
+  <form action="{{ url_for('edit_msg_form',id=id) }}" method="POST">
+  <div>
+        <label for="mtext">Message:   
+        </label>
+        <input id="title" name="mtext" type="text" value={{message.message}}/>
+      </div>
+
+<div>
+    <h4>Select tags!!</h4>
+    {% for t in tags %}
+<input type="checkbox" name="tag_input" value="{{t.id}}" {% if t.id in selected_tags_ids %}checked{% endif%}> {{t.tag_name}}
+{% endfor %}
+
+  </div>
+  <div><button type="submit" value="addmessage">Edit Message</button></div>
+
+</form>
+
+{% endblock %}

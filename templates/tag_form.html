@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Tag message</h4>
+  <form action="{{url_for('add_tag')}}" method="POST">
+  <div>
+        <label for="tag">Tag name:   
+        </label>
+        <input id="title" name="tag" type="text" placeholder="Enter tag."/>
+      </div>
+      <div>
+        <h4>Select messages</h4>
+        <ul>
+        {% for m in messages%}
+        <li>{{m.user.first_name}}: <input type="checkbox" name="message_id" value="{{m.id}}">{{m.message}}</li>
+        {% endfor %}
+      </ul>
+      </div>
+<div><button type="submit" value="addtag">Add Tag</button></div>
+</form>
+
+{% endblock %}

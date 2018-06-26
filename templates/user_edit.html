@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Edit user</h4>
+  <form action="{{ url_for('user_edit',id=id) }}?_method=PATCH" method="POST">
+  <div>
+        <label for="name">First Name:   
+        </label>
+        <input id="title" name="first_name" type="text" value ="{{first_name}}" />
+      </div>
+      <div>
+          <label for="lname">Last Name:   
+          </label>
+          <input id="title" name="last_name" type="text" value="{{last_name}}"/>
+        </div>
+<div><button type="submit" value="edituser">Edit User</button></div>
+</form> 
+
+<div>
+<h4>Here are your messages!</h4>
+<ul>
+    {% for m in messages %}
+    <li><a href="{{url_for('edit_msg',id=m.id)}}"> {{ m.message}}</a> 
+      {% if m.tags %}
+      Tags: {% for t in m.tags%}
+      {{t.tag_name}},
+      {% endfor %}
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>
+
+<form action="{{ url_for('user_delete',id=id) }}?_method=DELETE" method= "POST">
+ <div>
+    <button type="submit" value="delete">DELETE USER</button>
+  </div>
+</form>
+<a href="{{url_for('user_list')}}"> User List</a>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>users list</h4>
+<ul>
+  {% for u in users %}
+    <li><a href="{{url_for('user_edit_form',id=u.id)}}">{{ u.first_name}}</a>
+       <a href="{{url_for('message_form',id=u.id)}}"> <button> Add Message</button></a></li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('user_add_form') }}">Add a User</a> 
+
+<div>
+  <h4>List of tags</h4>
+  {% for t in tags %}
+  <li> <a href="{{url_for('edit_tag_form', id=t.id)}}"> {{t.tag_name}}</a></li>
+  {% endfor %}
+</div>
+
+<div> <a href="{{url_for('tag_form')}}"> Add Tag</a></div>
+{% endblock %}
